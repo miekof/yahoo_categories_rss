@@ -33,4 +33,3 @@ jobs:
           curl -o "xml-categories/science_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/science.xml
           sleep 3
           curl -o "xml-categories/life_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/life.xml
-          sleep 3
