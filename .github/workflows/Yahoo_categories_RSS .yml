@@ -11,17 +11,8 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v2
 
-      - name: Generate SSH key
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
-
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - name: Create xml-categories directory
+        run: mkdir -p xml-categories
 
       - name: Fetch Yahoo News categories RSS feeds
         run: |
@@ -42,14 +33,4 @@ jobs:
           curl -o "xml-categories/science_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/science.xml
           sleep 3
           curl -o "xml-categories/life_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/life.xml
-          sleep 3
-          curl -o "xml-categories/local_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/local.xml
-
-      - name: Commit and push XML files
-        run: |
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          git remote set-url origin git@github.com:skbnw/yahoo_categories_rss.git
-          git add xml-categories/
-          git commit -m "Update XML files"
-          git push
+          sleep
