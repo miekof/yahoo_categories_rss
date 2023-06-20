@@ -13,6 +13,7 @@ jobs:
         run: |
           mkdir -p xml-categories
           echo "::set-output name=dir::$(pwd)/xml-categories"
+        id: setup
 
       - name: Fetch domestic category RSS feed
         run: |
@@ -61,3 +62,6 @@ jobs:
           current_time=$(date +'%Y%m%d_%H%M')
           sleep 3s
           curl -o "${{ steps.setup.outputs.dir }}/life_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/life.xml
+
+      - name: Show contents of xml-categories folder
+        run: ls -R xml-categories
