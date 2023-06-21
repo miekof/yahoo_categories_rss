@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Set up directories
         run: |
-          mkdir -p ${{ github.workspace }}/xml-categories
-          echo "::set-output name=dir::${{ github.workspace }}/xml-categories"
+          mkdir -p xml-categories
+          echo "::set-output name=dir::$(pwd)/xml-categories"
         id: setup
 
       - name: Fetch domestic category RSS feed
@@ -64,4 +64,4 @@ jobs:
           curl -o "${{ steps.setup.outputs.dir }}/life_${current_time}_$(date +'%H%M').xml" https://news.yahoo.co.jp/rss/categories/life.xml
 
       - name: Show contents of xml-categories folder
-        run: ls -R ${{ github.workspace }}/xml-categories
+        run: ls -R xml-categories
