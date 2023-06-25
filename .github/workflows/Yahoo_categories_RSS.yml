@@ -10,7 +10,7 @@ jobs:
       - name: Set up directories
         run: |
           mkdir -p xml-categories
-          echo "dir=$(pwd)/xml-categories" >> $GITHUB_OUTPUT
+          echo "dir=$(pwd)/xml-categories" >> "$GITHUB_OUTPUT"
         id: setup
 
       - name: Fetch domestic category RSS feed
