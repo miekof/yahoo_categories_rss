@@ -2,7 +2,7 @@ name: Fetch Yahoo News categories RSS feeds
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs the workflow every hour
+    - cron: '0 * * * *'  # Runs the workflow every hour
 
 jobs:
   fetch-rss-feeds:
