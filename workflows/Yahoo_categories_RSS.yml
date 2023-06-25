@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '/5 * * * *'  # Runs the workflow every hour
+    - cron: '*/5 * * * *'  # Runs the workflow every hour
 
 jobs:
   fetch-rss-feeds:
